@@ -75,7 +75,7 @@
 								},
 								"sink": {
 									"name": "c1_school_closing",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -93,7 +93,7 @@
 								},
 								"sink": {
 									"name": "c2_workplace_closing",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -111,7 +111,7 @@
 								},
 								"sink": {
 									"name": "c3_cancel_public_events",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -129,7 +129,7 @@
 								},
 								"sink": {
 									"name": "c4_restrictions_on_gatherings",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -147,7 +147,7 @@
 								},
 								"sink": {
 									"name": "c5_close_public_transport",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -165,7 +165,7 @@
 								},
 								"sink": {
 									"name": "c6_stay_at_home_requirements",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -183,7 +183,7 @@
 								},
 								"sink": {
 									"name": "c7_restrictions_on_internal_movement",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -201,7 +201,7 @@
 								},
 								"sink": {
 									"name": "c8_international_travel_controls",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -210,7 +210,7 @@
 								},
 								"sink": {
 									"name": "e1_income_support",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -228,7 +228,7 @@
 								},
 								"sink": {
 									"name": "e2_debt/contract_relief",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -237,7 +237,7 @@
 								},
 								"sink": {
 									"name": "e3_fiscal_measures",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
