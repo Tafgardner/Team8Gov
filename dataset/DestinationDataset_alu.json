@@ -1,0 +1,20 @@
+{
+	"name": "DestinationDataset_alu",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2_Parquet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Covid19/CosmosDB",
+				"fileSystem": "workspace"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
