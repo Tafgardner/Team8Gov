@@ -9,7 +9,10 @@
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": "metrics_all",
+				"folderPath": "Covid19",
+				"fileSystem": "workspace"
 			}
 		},
 		"schema": {}
