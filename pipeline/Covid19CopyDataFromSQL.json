@@ -1,0 +1,118 @@
+{
+	"name": "Covid19CopyDataFromSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_y68",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_y68",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "dbo.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "workspace/Covid19/SQLDB/@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_y68",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_y68",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"table": "Country"
+						},
+						"destination": {
+							"fileName": "dboCountry"
+						}
+					},
+					{
+						"source": {
+							"table": "Covid19_Metrics"
+						},
+						"destination": {
+							"fileName": "dboCovid19_Metrics"
+						}
+					},
+					{
+						"source": {
+							"table": "Covid19_Metrics_All"
+						},
+						"destination": {
+							"fileName": "dboCovid19_Metrics_All"
+						}
+					},
+					{
+						"source": {
+							"table": "Dates"
+						},
+						"destination": {
+							"fileName": "dboDates"
+						}
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
