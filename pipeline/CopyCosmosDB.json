@@ -336,7 +336,7 @@
 								},
 								"sink": {
 									"name": "stringencyindex",
-									"type": "Int32"
+									"type": "Decimal"
 								}
 							},
 							{
