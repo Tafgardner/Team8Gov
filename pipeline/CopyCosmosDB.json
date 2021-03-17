@@ -47,8 +47,7 @@
 									"path": "$['countryname']"
 								},
 								"sink": {
-									"name": "countryname",
-									"type": "String"
+									"name": "countryname"
 								}
 							},
 							{
@@ -56,8 +55,7 @@
 									"path": "$['countrycode']"
 								},
 								"sink": {
-									"name": "countrycode",
-									"type": "String"
+									"name": "countrycode"
 								}
 							},
 							{
@@ -65,8 +63,7 @@
 									"path": "$['date']"
 								},
 								"sink": {
-									"name": "date",
-									"type": "String"
+									"name": "date"
 								}
 							},
 							{
@@ -74,8 +71,7 @@
 									"path": "$['c1_school_closing']"
 								},
 								"sink": {
-									"name": "c1_school_closing",
-									"type": "Decimal"
+									"name": "c1_school_closing"
 								}
 							},
 							{
@@ -83,8 +79,7 @@
 									"path": "$['c1_flag']"
 								},
 								"sink": {
-									"name": "c1_flag",
-									"type": "Boolean"
+									"name": "c1_flag"
 								}
 							},
 							{
@@ -92,8 +87,7 @@
 									"path": "$['c2_workplace_closing']"
 								},
 								"sink": {
-									"name": "c2_workplace_closing",
-									"type": "Decimal"
+									"name": "c2_workplace_closing"
 								}
 							},
 							{
@@ -101,8 +95,7 @@
 									"path": "$['c2_flag']"
 								},
 								"sink": {
-									"name": "c2_flag",
-									"type": "Boolean"
+									"name": "c2_flag"
 								}
 							},
 							{
@@ -110,8 +103,7 @@
 									"path": "$['c3_cancel_public_events']"
 								},
 								"sink": {
-									"name": "c3_cancel_public_events",
-									"type": "Decimal"
+									"name": "c3_cancel_public_events"
 								}
 							},
 							{
@@ -119,8 +111,7 @@
 									"path": "$['c3_flag']"
 								},
 								"sink": {
-									"name": "c3_flag",
-									"type": "Boolean"
+									"name": "c3_flag"
 								}
 							},
 							{
@@ -128,8 +119,7 @@
 									"path": "$['c4_restrictions_on_gatherings']"
 								},
 								"sink": {
-									"name": "c4_restrictions_on_gatherings",
-									"type": "Decimal"
+									"name": "c4_restrictions_on_gatherings"
 								}
 							},
 							{
@@ -137,8 +127,7 @@
 									"path": "$['c4_flag']"
 								},
 								"sink": {
-									"name": "c4_flag",
-									"type": "Boolean"
+									"name": "c4_flag"
 								}
 							},
 							{
@@ -146,8 +135,7 @@
 									"path": "$['c5_close_public_transport']"
 								},
 								"sink": {
-									"name": "c5_close_public_transport",
-									"type": "Decimal"
+									"name": "c5_close_public_transport"
 								}
 							},
 							{
@@ -155,8 +143,7 @@
 									"path": "$['c5_flag']"
 								},
 								"sink": {
-									"name": "c5_flag",
-									"type": "Boolean"
+									"name": "c5_flag"
 								}
 							},
 							{
@@ -164,8 +151,7 @@
 									"path": "$['c6_stay_at_home_requirements']"
 								},
 								"sink": {
-									"name": "c6_stay_at_home_requirements",
-									"type": "Decimal"
+									"name": "c6_stay_at_home_requirements"
 								}
 							},
 							{
@@ -173,8 +159,7 @@
 									"path": "$['c6_flag']"
 								},
 								"sink": {
-									"name": "c6_flag",
-									"type": "Boolean"
+									"name": "c6_flag"
 								}
 							},
 							{
@@ -182,8 +167,7 @@
 									"path": "$['c7_restrictions_on_internal_movement']"
 								},
 								"sink": {
-									"name": "c7_restrictions_on_internal_movement",
-									"type": "Decimal"
+									"name": "c7_restrictions_on_internal_movement"
 								}
 							},
 							{
@@ -191,8 +175,7 @@
 									"path": "$['c7_flag']"
 								},
 								"sink": {
-									"name": "c7_flag",
-									"type": "Boolean"
+									"name": "c7_flag"
 								}
 							},
 							{
@@ -200,8 +183,7 @@
 									"path": "$['c8_international_travel_controls']"
 								},
 								"sink": {
-									"name": "c8_international_travel_controls",
-									"type": "Decimal"
+									"name": "c8_international_travel_controls"
 								}
 							},
 							{
@@ -209,8 +191,7 @@
 									"path": "$['e1_income_support']"
 								},
 								"sink": {
-									"name": "e1_income_support",
-									"type": "Decimal"
+									"name": "e1_income_support"
 								}
 							},
 							{
@@ -218,8 +199,7 @@
 									"path": "$['e1_flag']"
 								},
 								"sink": {
-									"name": "e1_flag",
-									"type": "Boolean"
+									"name": "e1_flag"
 								}
 							},
 							{
@@ -227,8 +207,7 @@
 									"path": "$['e2_debt/contract_relief']"
 								},
 								"sink": {
-									"name": "e2_debt/contract_relief",
-									"type": "Decimal"
+									"name": "e2_debt/contract_relief"
 								}
 							},
 							{
@@ -236,8 +215,7 @@
 									"path": "$['e3_fiscal_measures']"
 								},
 								"sink": {
-									"name": "e3_fiscal_measures",
-									"type": "Decimal"
+									"name": "e3_fiscal_measures"
 								}
 							},
 							{
@@ -245,8 +223,7 @@
 									"path": "$['e4_international_support']"
 								},
 								"sink": {
-									"name": "e4_international_support",
-									"type": "Decimal"
+									"name": "e4_international_support"
 								}
 							},
 							{
@@ -254,8 +231,7 @@
 									"path": "$['h1_public_information_campaigns']"
 								},
 								"sink": {
-									"name": "h1_public_information_campaigns",
-									"type": "Decimal"
+									"name": "h1_public_information_campaigns"
 								}
 							},
 							{
@@ -263,8 +239,7 @@
 									"path": "$['h1_flag']"
 								},
 								"sink": {
-									"name": "h1_flag",
-									"type": "Boolean"
+									"name": "h1_flag"
 								}
 							},
 							{
@@ -272,8 +247,7 @@
 									"path": "$['h2_testing_policy']"
 								},
 								"sink": {
-									"name": "h2_testing_policy",
-									"type": "Decimal"
+									"name": "h2_testing_policy"
 								}
 							},
 							{
@@ -281,8 +255,7 @@
 									"path": "$['h3_contact_tracing']"
 								},
 								"sink": {
-									"name": "h3_contact_tracing",
-									"type": "Decimal"
+									"name": "h3_contact_tracing"
 								}
 							},
 							{
@@ -290,8 +263,7 @@
 									"path": "$['h4_emergency_investment_in_healthcare']"
 								},
 								"sink": {
-									"name": "h4_emergency_investment_in_healthcare",
-									"type": "Decimal"
+									"name": "h4_emergency_investment_in_healthcare"
 								}
 							},
 							{
@@ -299,8 +271,7 @@
 									"path": "$['h5_investment_in_vaccines']"
 								},
 								"sink": {
-									"name": "h5_investment_in_vaccines",
-									"type": "Decimal"
+									"name": "h5_investment_in_vaccines"
 								}
 							},
 							{
@@ -308,8 +279,7 @@
 									"path": "$['m1_wildcard']"
 								},
 								"sink": {
-									"name": "m1_wildcard",
-									"type": "String"
+									"name": "m1_wildcard"
 								}
 							},
 							{
@@ -317,8 +287,7 @@
 									"path": "$['confirmedcases']"
 								},
 								"sink": {
-									"name": "confirmedcases",
-									"type": "String"
+									"name": "confirmedcases"
 								}
 							},
 							{
@@ -326,8 +295,7 @@
 									"path": "$['confirmeddeaths']"
 								},
 								"sink": {
-									"name": "confirmeddeaths",
-									"type": "String"
+									"name": "confirmeddeaths"
 								}
 							},
 							{
@@ -335,8 +303,7 @@
 									"path": "$['stringencyindex']"
 								},
 								"sink": {
-									"name": "stringencyindex",
-									"type": "Decimal"
+									"name": "stringencyindex"
 								}
 							},
 							{
@@ -344,8 +311,7 @@
 									"path": "$['stringencyindexfordisplay']"
 								},
 								"sink": {
-									"name": "stringencyindexfordisplay",
-									"type": "Decimal"
+									"name": "stringencyindexfordisplay"
 								}
 							},
 							{
@@ -353,8 +319,7 @@
 									"path": "$['legacystringencyindex']"
 								},
 								"sink": {
-									"name": "legacystringencyindex",
-									"type": "String"
+									"name": "legacystringencyindex"
 								}
 							},
 							{
@@ -362,8 +327,7 @@
 									"path": "$['legacystringencyindexfordisplay']"
 								},
 								"sink": {
-									"name": "legacystringencyindexfordisplay",
-									"type": "String"
+									"name": "legacystringencyindexfordisplay"
 								}
 							},
 							{
@@ -371,8 +335,7 @@
 									"path": "$['iso_country']"
 								},
 								"sink": {
-									"name": "iso_country",
-									"type": "String"
+									"name": "iso_country"
 								}
 							},
 							{
@@ -380,8 +343,7 @@
 									"path": "$['load_date']"
 								},
 								"sink": {
-									"name": "load_date",
-									"type": "String"
+									"name": "load_date"
 								}
 							},
 							{
@@ -389,8 +351,7 @@
 									"path": "$['id']"
 								},
 								"sink": {
-									"name": "id",
-									"type": "String"
+									"name": "id"
 								}
 							},
 							{
@@ -398,8 +359,7 @@
 									"path": "$['_rid']"
 								},
 								"sink": {
-									"name": "_rid",
-									"type": "String"
+									"name": "_rid"
 								}
 							},
 							{
@@ -407,8 +367,7 @@
 									"path": "$['_self']"
 								},
 								"sink": {
-									"name": "_self",
-									"type": "String"
+									"name": "_self"
 								}
 							},
 							{
@@ -416,8 +375,7 @@
 									"path": "$['_etag']"
 								},
 								"sink": {
-									"name": "_etag",
-									"type": "String"
+									"name": "_etag"
 								}
 							},
 							{
@@ -425,8 +383,7 @@
 									"path": "$['_attachments']"
 								},
 								"sink": {
-									"name": "_attachments",
-									"type": "String"
+									"name": "_attachments"
 								}
 							},
 							{
@@ -434,8 +391,15 @@
 									"path": "$['_ts']"
 								},
 								"sink": {
-									"name": "_ts",
-									"type": "Decimal"
+									"name": "_ts"
+								}
+							},
+							{
+								"source": {
+									"path": "$['cosmosDB']"
+								},
+								"sink": {
+									"name": "source"
 								}
 							}
 						]
