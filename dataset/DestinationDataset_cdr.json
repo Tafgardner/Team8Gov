@@ -1,0 +1,29 @@
+{
+	"name": "DestinationDataset_cdr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2_Parquet",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_fileName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().cw_fileName",
+					"type": "Expression"
+				},
+				"folderPath": "Covid19/sqlVM",
+				"fileSystem": "workspace"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
