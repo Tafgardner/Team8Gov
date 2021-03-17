@@ -446,7 +446,7 @@
 							},
 							{
 								"source": {
-									"path": "$['cosmosDB']"
+									"path": "$['source']"
 								},
 								"sink": {
 									"name": "source",
