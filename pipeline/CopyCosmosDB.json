@@ -400,7 +400,8 @@
 									"path": "$['cosmosDB']"
 								},
 								"sink": {
-									"name": "source"
+									"name": "source",
+									"type": "String"
 								}
 							}
 						]
