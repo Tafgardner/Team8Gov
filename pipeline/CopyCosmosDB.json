@@ -279,7 +279,8 @@
 									"path": "$['m1_wildcard']"
 								},
 								"sink": {
-									"name": "m1_wildcard"
+									"name": "m1_wildcard",
+									"type": "String"
 								}
 							},
 							{
