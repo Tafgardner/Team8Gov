@@ -26,6 +26,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "CosmosDbSqlApiSource",
+						"additionalColumns": [
+							{
+								"name": "source",
+								"value": "cosmosDB"
+							}
+						],
 						"preferredRegions": []
 					},
 					"sink": {
