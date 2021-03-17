@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CosmosDBConnection'"
 		},
+		"SqlServer1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covid19zq4mi4h4c2rqu.dfs.core.windows.net"
@@ -93,6 +97,16 @@
 				"typeProperties": {
 					"connectionString": "[parameters('CosmosDBConnection_connectionString')]"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/VMintegrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
 			},
 			"dependsOn": []
 		},
@@ -234,6 +248,40 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": "Covid19/CosmosDB",
+						"fileSystem": "workspace"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage2_Parquet')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_cdr')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage2_Parquet",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"folderPath": "Covid19/sqlVM",
 						"fileSystem": "workspace"
 					},
 					"compressionCodec": "snappy"
@@ -472,6 +520,25 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SqlServer1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('SqlServer1_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "VMintegrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/VMintegrationRuntime1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/CopyCosmosDB')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -501,6 +568,12 @@
 						"typeProperties": {
 							"source": {
 								"type": "CosmosDbSqlApiSource",
+								"additionalColumns": [
+									{
+										"name": "source",
+										"value": "cosmosDB"
+									}
+								],
 								"preferredRegions": []
 							},
 							"sink": {
@@ -910,7 +983,16 @@
 										},
 										"sink": {
 											"name": "_ts",
-											"type": "Decimal"
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['source']"
+										},
+										"sink": {
+											"name": "source",
+											"type": "String"
 										}
 									}
 								]
@@ -980,6 +1062,12 @@
 									"typeProperties": {
 										"source": {
 											"type": "AzureSqlSource",
+											"additionalColumns": [
+												{
+													"name": "source",
+													"value": "SQL"
+												}
+											],
 											"partitionOption": "None"
 										},
 										"sink": {
@@ -1127,6 +1215,173 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
 				"[concat(variables('factoryId'), '/datasets/Parquet1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_cdr')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SqlServer1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_table": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().cw_table",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SqlServer1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyDataFRomOnPremSQL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "ForEach_cdr",
+						"type": "ForEach",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.cw_items",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Copy_cdr",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [
+										{
+											"name": "Source",
+											"value": "dbo.@{item().source.table}"
+										},
+										{
+											"name": "Destination",
+											"value": "workspace/Covid19/sqlVM/@{item().destination.fileName}"
+										}
+									],
+									"typeProperties": {
+										"source": {
+											"type": "SqlServerSource",
+											"additionalColumns": [
+												{
+													"name": "source",
+													"value": "onPremSQL"
+												}
+											],
+											"partitionOption": "None"
+										},
+										"sink": {
+											"type": "ParquetSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											},
+											"formatSettings": {
+												"type": "ParquetWriteSettings"
+											}
+										},
+										"enableStaging": false,
+										"validateDataConsistency": false
+									},
+									"inputs": [
+										{
+											"referenceName": "SourceDataset_cdr",
+											"type": "DatasetReference",
+											"parameters": {
+												"cw_table": "@item().source.table"
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DestinationDataset_cdr",
+											"type": "DatasetReference",
+											"parameters": {
+												"cw_fileName": "@item().destination.fileName"
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"parameters": {
+					"cw_items": {
+						"type": "Array",
+						"defaultValue": [
+							{
+								"source": {
+									"table": "Country"
+								},
+								"destination": {
+									"fileName": "dboCountry"
+								}
+							},
+							{
+								"source": {
+									"table": "Covid19_Metrics"
+								},
+								"destination": {
+									"fileName": "dboCovid19_Metrics"
+								}
+							},
+							{
+								"source": {
+									"table": "Covid19_Metrics_All"
+								},
+								"destination": {
+									"fileName": "dboCovid19_Metrics_All"
+								}
+							},
+							{
+								"source": {
+									"table": "Dates"
+								},
+								"destination": {
+									"fileName": "dboDates"
+								}
+							},
+							{
+								"source": {
+									"table": "sysdiagrams"
+								},
+								"destination": {
+									"fileName": "dbosysdiagrams"
+								}
+							}
+						]
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_cdr')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_cdr')]"
 			]
 		}
 	]

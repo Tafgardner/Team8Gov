@@ -17,6 +17,9 @@
 		"CosmosDBConnection_connectionString": {
 			"value": ""
 		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://covid19zq4mi4h4c2rqu.dfs.core.windows.net"
 		},
