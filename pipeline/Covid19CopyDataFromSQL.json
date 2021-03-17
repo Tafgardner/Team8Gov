@@ -55,20 +55,7 @@
 									}
 								},
 								"enableStaging": false,
-								"validateDataConsistency": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "source"
-											},
-											"sink": {
-												"name": "source"
-											}
-										}
-									]
-								}
+								"validateDataConsistency": false
 							},
 							"inputs": [
 								{
