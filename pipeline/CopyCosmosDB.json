@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_alu",
+				"name": "Copy_alu2",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
