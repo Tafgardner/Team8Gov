@@ -37,12 +37,6 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"additionalColumns": [
-										{
-											"name": "source",
-											"value": "onPremSQL"
-										}
-									],
 									"partitionOption": "None"
 								},
 								"sink": {
